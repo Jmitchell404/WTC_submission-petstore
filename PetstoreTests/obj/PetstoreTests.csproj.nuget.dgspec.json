@@ -1,0 +1,94 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/josh/QA_Exercise/submission-petstore/PetstoreTests/PetstoreTests.csproj": {}
+  },
+  "projects": {
+    "/home/josh/QA_Exercise/submission-petstore/PetstoreTests/PetstoreTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/josh/QA_Exercise/submission-petstore/PetstoreTests/PetstoreTests.csproj",
+        "projectName": "PetstoreTests",
+        "projectPath": "/home/josh/QA_Exercise/submission-petstore/PetstoreTests/PetstoreTests.csproj",
+        "packagesPath": "/home/josh/.nuget/packages/",
+        "outputPath": "/home/josh/QA_Exercise/submission-petstore/PetstoreTests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/josh/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MethodBoundaryAspect.Fody": {
+              "target": "Package",
+              "version": "[2.0.146, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.1.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[108.0.2, )"
+            },
+            "WeThinkCode.QaMinimal": {
+              "target": "Package",
+              "version": "[0.3.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.110/sdk/6.0.110/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

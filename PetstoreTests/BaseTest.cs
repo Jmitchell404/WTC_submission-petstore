@@ -12,22 +12,39 @@ public class Inventory
 
 public class Category
 {
-    // complete this class
+    public int? Id { get ; set; }
+    public string? name { get ; set; }
+
 }
 
 public class Tag
 {
-    // complete this class
+    public int? Id { get ; set; }
+    public string? name { get ; set; }
 }
 
 public class Pet
 {
-    // complete this class
+    public int? Id { get; set; }
+    public Category? Category { get; set; }
+    public string? Name { get; set; }
+    public List<string>? PhotoUrls { get; set; }
+    public List<Tag>? Tags { get; set; }
+    public string? Status { get; set; }
+    public int? Code { get; set; }
+    public string? Type { get; set; }
+    public string? Message { get; set; }
+
 }
 
 public class Order
 {
-    // complete this class
+    public int? Id { get; set; }
+    public int? PetId { get; set; }
+    public int? Quantity { get; set; }
+    public string? ShipDate { get; set; }
+    public string? Status { get; set; }
+    public bool? Complete { get; set; }
 }
 
 public class BaseTest
@@ -56,21 +73,66 @@ public class BaseTest
     
     protected Pet? CreatePet(string name)
     {
-        return null; // replace this code
+        var body = new {
+            id = 0,
+            category = new{
+                id = 0,
+                name = "string"
+            },
+            name = name,
+            photoUrls = new List<string>{
+                "string"
+            },
+            tags = new List<object>{
+                new {
+                    id = 1,
+                    name = "string"
+                }
+            },
+            status = "available"
+        };
+        var request = new RestRequest("/pet", Method.Post);
+        request.AddHeader("Content-type","application/json");
+        request.AddJsonBody(
+            new {
+                id = 0,
+                category = new{
+                    id = 0,
+                    name = "string"
+                },
+                name = name,
+                photoUrls = new List<string>{
+                    "string"
+                },
+                tags = new List<object>{
+                    new {
+                        id = 1,
+                        name = "string"
+                    }
+                },
+                status = "available"
+            }
+        );
+        return client.PostAsync<Pet>((request)).GetAwaiter().GetResult();
     }
 
     protected void RemovePet(Pet pet)
     {
-        // complete this code
+        var request = new RestRequest($"/pet/{pet.Id}");
+        client.DeleteAsync(request);
     }
 
     protected Pet? GetPet(int petId)
     {
-        return null; // replace this code
+        var request = new RestRequest("/store/"+petId);
+        var result = client.GetAsync<Pet>((request)).GetAwaiter().GetResult();
+        return result;
     }
 
     protected Order? OrderPet(Pet pet, int quantity)
     {
-        return null; // replace this code
+        var request = new RestRequest("/store/"+pet+quantity);
+        var result = client.GetAsync<Order>((request)).GetAwaiter().GetResult();
+        return result;
     }
 }
