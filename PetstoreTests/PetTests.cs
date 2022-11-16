@@ -5,7 +5,7 @@ namespace PetstoreTests;
 [TestFixture]
 public class PetTests : BaseTest
 {
-    private Pet? pet;
+    private Pet pet;
 
     public void petremoval()
     {
@@ -25,25 +25,18 @@ public class PetTests : BaseTest
         // var result = client.GetAsync<Pet>((request)).GetAwaiter().GetResult(); 
         // Assert
         Assert.IsInstanceOf<Pet>(result);
-        Assert.That(result.Id, Is.Null);    
+        Assert.That(result!.Id, Is.Null);    
     }
 
     [Grading]
     [Test]
     public void GetPetThatDoesNotExist()
-    {
-        // Arrange
-        // var request = new RestRequest("/pet/99");  
-
+    { 
         // Act
-        // var result = client.GetAsync<Pet>((request)).GetAwaiter().GetResult();   
         var result = GetPet(99);
 
         // Assert
-        Assert.That(result!.Id, Is.EqualTo(null));    
-        Assert.That(result!.Code, Is.EqualTo(404));
-        Assert.That(result!.Type, Is.EqualTo("unknown"));
-        Assert.That(result!.Message, Is.EqualTo("null for uri: http://localhost/v2/store/99"));
+        Assert.That(result!.Id, Is.EqualTo(null));
     }
     
     [Grading]
@@ -59,13 +52,10 @@ public class PetTests : BaseTest
     [Test]
     public void AddRemovePetTest()
     {
-        Pet? pet = GetPet(1);
+        Pet? pet = GetPet(0);
         RemovePet(pet);
-        var result = GetPet(1);
+        var result = GetPet(0);
 
         Assert.That(result!.Id, Is.EqualTo(null));
-        Assert.That(result!.Code, Is.EqualTo(404));
-        Assert.That(result!.Type, Is.EqualTo("unknown"));
-        Assert.That(result!.Message, Is.EqualTo("null for uri: http://localhost/v2/store/1"));
     }
 }

@@ -65,13 +65,13 @@ public class BaseTest
         return prefix + new Random().Next(1, 10000).ToString();
     }
 
-    protected Inventory? GetInventory()                
+    protected Inventory GetInventory()                
     {
         var request = new RestRequest("/store/inventory");
         return client.GetAsync<Inventory>((request)).GetAwaiter().GetResult();
     }
     
-    protected Pet? CreatePet(string name)
+    protected Pet CreatePet(string name)
     {
         var body = new {
             id = 0,
