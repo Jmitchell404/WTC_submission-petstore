@@ -19,7 +19,7 @@ public class OrderTests : BaseTest
         pet = CreatePet("end my clone existance");
         var result = OrderPet(pet, 66);   
 
-        Assert.That(result!.PetId, Is.Not.EqualTo(66));
-        Assert.That(result!.Quantity, Is.EqualTo(null));                
+        Assert.That(result!.PetId, Is.EqualTo(pet.Id));
+        Assert.That(result!.Quantity, Is.EqualTo(66));                
     }
 }

@@ -28,7 +28,7 @@ public class InventoryTests : BaseTest
         
         // Assert
         Assert.That(result!.Sold, Is.EqualTo(1));    
-        Assert.That(result!.Pending, Is.EqualTo(2));   
-        Assert.That(result!.Available, Is.Not.EqualTo(7)); 
+        Assert.That(result.Pending, Is.EqualTo(2));   
+        Assert.That(result.Available, Is.EqualTo(7)); 
     }
 }

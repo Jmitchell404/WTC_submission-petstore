@@ -12,15 +12,15 @@ public class Inventory
 
 public class Category
 {
-    public int? Id { get ; set; }
+    public int Id { get ; set; }
     public string? name { get ; set; }
 
 }
 
 public class Tag
 {
-    public int? Id { get ; set; }
-    public string? name { get ; set; }
+    public int Id { get ; set; }
+    public string? Name { get ; set; }
 }
 
 public class Pet
@@ -68,7 +68,7 @@ public class BaseTest
     protected Inventory? GetInventory()                
     {
         var request = new RestRequest("/store/inventory");
-        return client.GetAsync<Inventory>((request)).GetAwaiter().GetResult(); 
+        return client.GetAsync<Inventory>((request)).GetAwaiter().GetResult();
     }
     
     protected Pet? CreatePet(string name)
@@ -115,9 +115,9 @@ public class BaseTest
         );
         return client.PostAsync<Pet>((request)).GetAwaiter().GetResult();
     }
-
     protected void RemovePet(Pet pet)
     {
+
         var request = new RestRequest($"/pet/{pet.Id}");
         client.DeleteAsync(request);
     }
@@ -125,14 +125,17 @@ public class BaseTest
     protected Pet? GetPet(int petId)
     {
         var request = new RestRequest("/store/"+petId);
-        var result = client.GetAsync<Pet>((request)).GetAwaiter().GetResult();
-        return result;
+        return client.GetAsync<Pet>((request)).GetAwaiter().GetResult();
     }
 
     protected Order? OrderPet(Pet pet, int quantity)
     {
-        var request = new RestRequest("/store/"+pet+quantity);
-        var result = client.GetAsync<Order>((request)).GetAwaiter().GetResult();
-        return result;
+        var request = new RestRequest("/store/order");
+        request.RequestFormat = DataFormat.Json;
+        var order = new Order();
+        order.PetId = pet.Id;
+        order.Quantity = quantity;
+        request.AddBody(order);
+        return client.PostAsync<Order>((request)).GetAwaiter().GetResult();
     }
 }
